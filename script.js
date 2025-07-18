@@ -3,16 +3,71 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+});
+
+// Tab functionality for itineraries
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding content
+            this.classList.add('active');
+            document.getElementById(targetTab + '-tab').classList.add('active');
+        });
+    });
+});
+
+// Category filtering for attractions
+document.addEventListener('DOMContentLoaded', function() {
+    const categoryButtons = document.querySelectorAll('.category-button');
+    const attractionCards = document.querySelectorAll('.attraction-card');
+    
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetCategory = this.getAttribute('data-category');
+            
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter cards
+            attractionCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (targetCategory === 'all' || cardCategory === targetCategory) {
+                    card.classList.remove('hidden');
+                    card.style.display = 'block';
+                } else {
+                    card.classList.add('hidden');
+                    setTimeout(() => {
+                        if (card.classList.contains('hidden')) {
+                            card.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
         });
     });
 });
@@ -31,7 +86,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Initialize Leaflet Map
+// Initialize Leaflet Map with enhanced markers
 function initMap() {
     // Ushuaia coordinates
     const ushuaiaCoords = [-54.8019, -68.3030];
@@ -47,40 +102,42 @@ function initMap() {
     // Define custom icons
     const museumIcon = L.divIcon({
         className: 'custom-marker museum-marker',
-        html: '<div style="background: #dc2626; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
+        html: '<div style="background: #dc2626; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">M</div>',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12]
     });
     
     const natureIcon = L.divIcon({
         className: 'custom-marker nature-marker',
-        html: '<div style="background: #16a34a; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
+        html: '<div style="background: #16a34a; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">N</div>',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12]
     });
     
     const diningIcon = L.divIcon({
         className: 'custom-marker dining-marker',
-        html: '<div style="background: #f59e0b; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
+        html: '<div style="background: #f59e0b; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">R</div>',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12]
+    });
+    
+    const barsIcon = L.divIcon({
+        className: 'custom-marker bars-marker',
+        html: '<div style="background: #8b5cf6; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">B</div>',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12]
     });
     
     const transportIcon = L.divIcon({
         className: 'custom-marker transport-marker',
-        html: '<div style="background: #3b82f6; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3);"></div>',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
+        html: '<div style="background: #3b82f6; width: 25px; height: 25px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">T</div>',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12]
     });
     
     // Add markers for key locations
     const locations = [
-        {
-            coords: [-54.8019, -68.3030],
-            title: "City Center",
-            description: "Main tourist area with shops and restaurants",
-            icon: transportIcon
-        },
+        // Museums & Attractions
         {
             coords: [-54.8100, -68.3100],
             title: "Maritime & Prison Museum",
@@ -102,20 +159,68 @@ function initMap() {
         {
             coords: [-54.8500, -68.5500],
             title: "Tierra del Fuego National Park",
-            description: "Accessible boardwalks and End of Pan-American Highway",
+            description: "Boardwalks and End of Pan-American Highway",
             icon: natureIcon
         },
+        
+        // Restaurants
         {
             coords: [-54.8020, -68.3020],
             title: "Kaupe Restaurant",
-            description: "King crab specialties - recommended dining",
+            description: "Premium king crab and Patagonian cuisine - $60-90",
+            icon: diningIcon
+        },
+        {
+            coords: [-54.8015, -68.3025],
+            title: "Chez Manu",
+            description: "French-Patagonian fusion with wine pairings - $50-80",
             icon: diningIcon
         },
         {
             coords: [-54.8010, -68.3040],
-            title: "Café Tante Sara",
-            description: "Traditional tea house and pastries",
+            title: "Tante Sara",
+            description: "Traditional tea house and local specialties - $30-50",
             icon: diningIcon
+        },
+        {
+            coords: [-54.8025, -68.3015],
+            title: "Volver Restaurant",
+            description: "Contemporary Argentine cuisine with gin cocktails - $40-70",
+            icon: diningIcon
+        },
+        
+        // Bars & Breweries
+        {
+            coords: [-54.8005, -68.3035],
+            title: "Cervecería Beagle",
+            description: "Local craft brewery with tours and tastings - $15-25",
+            icon: barsIcon
+        },
+        {
+            coords: [-54.8030, -68.3005],
+            title: "Dublin Pub Ushuaia",
+            description: "Irish pub with beer, whiskey, and gin selection - $20-35",
+            icon: barsIcon
+        },
+        {
+            coords: [-54.8012, -68.3028],
+            title: "Kuar Wine Bar",
+            description: "Argentine wines from Mendoza and Patagonia - $25-45",
+            icon: barsIcon
+        },
+        {
+            coords: [-54.8018, -68.3022],
+            title: "Laguna Negra",
+            description: "Trendy cocktail bar with gin-based drinks - $18-30",
+            icon: barsIcon
+        },
+        
+        // Transportation
+        {
+            coords: [-54.8019, -68.3030],
+            title: "City Center",
+            description: "Main tourist area with shops and restaurants",
+            icon: transportIcon
         },
         {
             coords: [-54.8430, -68.2850],
@@ -136,8 +241,8 @@ function initMap() {
         const marker = L.marker(location.coords, { icon: location.icon })
             .addTo(map)
             .bindPopup(`
-                <div style="font-family: 'Inter', sans-serif;">
-                    <h4 style="margin: 0 0 8px 0; color: #1e293b; font-weight: 600;">${location.title}</h4>
+                <div style="font-family: 'Inter', sans-serif; max-width: 250px;">
+                    <h4 style="margin: 0 0 8px 0; color: #1e293b; font-weight: 600; font-size: 16px;">${location.title}</h4>
                     <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.4;">${location.description}</p>
                 </div>
             `);
@@ -154,7 +259,12 @@ function initMap() {
         weight: 2,
         fillColor: "#0ea5e9",
         fillOpacity: 0.1
-    }).addTo(map).bindPopup("Beagle Channel - Boat tour area with wildlife viewing");
+    }).addTo(map).bindPopup(`
+        <div style="font-family: 'Inter', sans-serif;">
+            <h4 style="margin: 0 0 8px 0; color: #1e293b; font-weight: 600;">Beagle Channel</h4>
+            <p style="margin: 0; color: #64748b; font-size: 14px;">Boat tour area with wildlife viewing</p>
+        </div>
+    `);
 }
 
 // Initialize map when page loads
@@ -204,58 +314,31 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Weather widget simulation (could be connected to real API)
-function updateWeatherInfo() {
-    const weatherData = {
-        temperature: Math.floor(Math.random() * 7) - 2, // -2 to 5°C
-        condition: ['Cloudy', 'Partly Cloudy', 'Light Snow', 'Clear'][Math.floor(Math.random() * 4)],
-        windSpeed: Math.floor(Math.random() * 20) + 10 // 10-30 km/h
+// Budget calculator for different itineraries
+function calculateItineraryBudget(itineraryType) {
+    const budgets = {
+        nature: 1610,
+        culture: 1440,
+        local: 1620
     };
-    
-    // This could be expanded to show real weather data
-    console.log('Current Ushuaia weather:', weatherData);
-}
-
-// Budget calculator
-function calculateDailyBudget() {
-    const totalBudget = 1517; // From itinerary
-    const days = 7;
-    const dailyAverage = Math.round(totalBudget / days);
     
     return {
-        total: totalBudget,
-        daily: dailyAverage,
-        perPerson: Math.round(dailyAverage / 2)
+        total: budgets[itineraryType],
+        daily: Math.round(budgets[itineraryType] / 7),
+        perPerson: Math.round(budgets[itineraryType] / 2)
     };
-}
-
-// Initialize budget display
-document.addEventListener('DOMContentLoaded', function() {
-    const budget = calculateDailyBudget();
-    console.log('Budget breakdown:', budget);
-});
-
-// Add loading states for interactive elements
-function showLoading(element) {
-    element.style.opacity = '0.6';
-    element.style.pointerEvents = 'none';
-}
-
-function hideLoading(element) {
-    element.style.opacity = '1';
-    element.style.pointerEvents = 'auto';
 }
 
 // Accessibility enhancements
 document.addEventListener('DOMContentLoaded', function() {
-    // Add keyboard navigation for cards
-    const cards = document.querySelectorAll('.attraction-card, .overview-card');
+    // Add keyboard navigation for interactive elements
+    const interactiveElements = document.querySelectorAll('.tab-button, .category-button, .attraction-card');
     
-    cards.forEach(card => {
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('role', 'button');
+    interactiveElements.forEach(element => {
+        element.setAttribute('tabindex', '0');
+        element.setAttribute('role', 'button');
         
-        card.addEventListener('keydown', function(e) {
+        element.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 this.click();
@@ -282,9 +365,46 @@ function printHandbook() {
     window.print();
 }
 
-// Add print button (could be added to the UI)
+// Local storage for user preferences
+function saveUserPreferences() {
+    const preferences = {
+        preferredItinerary: document.querySelector('.tab-button.active')?.getAttribute('data-tab'),
+        preferredCategory: document.querySelector('.category-button.active')?.getAttribute('data-category')
+    };
+    
+    localStorage.setItem('ushuaiaPreferences', JSON.stringify(preferences));
+}
+
+function loadUserPreferences() {
+    const saved = localStorage.getItem('ushuaiaPreferences');
+    if (saved) {
+        const preferences = JSON.parse(saved);
+        
+        // Restore itinerary tab
+        if (preferences.preferredItinerary) {
+            const tabButton = document.querySelector(`[data-tab="${preferences.preferredItinerary}"]`);
+            if (tabButton) {
+                tabButton.click();
+            }
+        }
+        
+        // Restore category filter
+        if (preferences.preferredCategory) {
+            const categoryButton = document.querySelector(`[data-category="${preferences.preferredCategory}"]`);
+            if (categoryButton) {
+                categoryButton.click();
+            }
+        }
+    }
+}
+
+// Save preferences when user makes selections
 document.addEventListener('DOMContentLoaded', function() {
-    // This could be expanded to add a print button to the interface
-    console.log('Print functionality available');
+    document.querySelectorAll('.tab-button, .category-button').forEach(button => {
+        button.addEventListener('click', saveUserPreferences);
+    });
+    
+    // Load preferences on page load
+    setTimeout(loadUserPreferences, 500);
 });
 
