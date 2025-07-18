@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ushuaia Travel Handbook - Journey to the End of the World</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>🏔️ Ushuaia Handbook</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#overview" class="nav-link">Overview</a></li>
+                <li><a href="#itinerary" class="nav-link">Itinerary</a></li>
+                <li><a href="#attractions" class="nav-link">Attractions</a></li>
+                <li><a href="#map" class="nav-link">Map</a></li>
+                <li><a href="#tips" class="nav-link">Tips</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Journey to the End of the World</h1>
+            <p class="hero-subtitle">Your Complete 7-Day Ushuaia Travel Handbook</p>
+            <p class="hero-description">Discover the southernmost city on Earth with historical sites, hidden gems, stunning nature, incredible local cuisine, craft beer, fine wines, and authentic Patagonian experiences.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Days</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">$1,500</span>
+                    <span class="stat-label">Budget</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Travelers</span>
+                </div>
+            </div>
+            <a href="#overview" class="cta-button">Start Planning</a>
+        </div>
+        <div class="hero-image">
+            <img src="images/ushuaia_city_view.jpg" alt="Ushuaia City View" />
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Trip Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="card-icon">🗓️</div>
+                    <h3>Travel Dates</h3>
+                    <p>July 31 - August 7, 2025</p>
+                    <small>Winter season in Patagonia</small>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">🌡️</div>
+                    <h3>Weather</h3>
+                    <p>-2°C to 5°C (28-41°F)</p>
+                    <small>Pack warm, waterproof layers</small>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>Activity Levels</h3>
+                    <p>Mix of easy to moderate activities</p>
+                    <small>Warnings provided for challenging hikes</small>
+                </div>
+                <div class="overview-card">
+                    <div class="card-icon">💰</div>
+                    <h3>Budget</h3>
+                    <p>$1,400-1,520 total</p>
+                    <small>Accommodation provided</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Itineraries -->
+    <section id="itinerary" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Choose Your Adventure Style</h2>
+            <p class="section-subtitle">Three curated 7-day experiences to match your travel preferences</p>
+            
+            <div class="itinerary-tabs">
+                <button class="tab-button active" data-tab="nature">🏔️ Nature & Adventure</button>
+                <button class="tab-button" data-tab="culture">🏛️ Culture & Snow</button>
+                <button class="tab-button" data-tab="local">🍷 Local Experiences</button>
+            </div>
+
+            <!-- Nature & Adventure Itinerary -->
+            <div class="tab-content active" id="nature-tab">
+                <div class="itinerary-header">
+                    <h3>Nature & Adventure Focus</h3>
+                    <p>Perfect for outdoor enthusiasts who want to experience Patagonia's raw beauty</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Day 1: Arrival & Beagle Channel</h4>
+                            <p>Immediate boat tour to Les Eclaireurs Lighthouse, wildlife spotting</p>
+                            <span class="activity-level moderate">⚠️ Moderate - Boat tour in winter conditions</span>
+                            <span class="timeline-budget">Budget: $180</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Day 2: Tierra del Fuego National Park</h4>
+                            <p>Full day hiking, End of Pan-American Highway, Lapataia Bay</p>
+                            <span class="activity-level challenging">⚠️ Challenging - 4-6 hours of hiking</span>
+                            <span class="timeline-budget">Budget: $220</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4>Day 3: Cerro Martial & Glacier Trek</h4>
+                            <p>Chairlift to glacier viewpoint, optional glacier hiking</p>
+                            <span class="activity-level challenging">⚠️ Challenging - High altitude, icy conditions</span>
+                            <span class="timeline-budget">Budget: $250</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item relaxation">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4>Day 4: Recovery & Local Brewery Tour</h4>
+                            <p>Beagle Brewery visit, craft beer tasting, gentle city walks</p>
+                            <span class="activity-level easy">✓ Easy - Indoor activities, short walks</span>
+                            <span class="timeline-budget">Budget: $160</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <h4>Day 5: Lago Escondido & Fagnano</h4>
+                            <p>Off-road adventure to hidden lakes, winter landscapes</p>
+                            <span class="activity-level moderate">⚠️ Moderate - Long drive, cold weather</span>
+                            <span class="timeline-budget">Budget: $280</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">6</div>
+                        <div class="timeline-content">
+                            <h4>Day 6: Harberton Ranch & Penguin Colony</h4>
+                            <p>Historic estancia visit, Martillo Island penguins (if accessible)</p>
+                            <span class="activity-level moderate">⚠️ Moderate - Weather dependent</span>
+                            <span class="timeline-budget">Budget: $320</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">7</div>
+                        <div class="timeline-content">
+                            <h4>Day 7: Farewell Wine Tasting</h4>
+                            <p>Local wine bar tour, souvenir shopping, farewell dinner</p>
+                            <span class="activity-level easy">✓ Easy - Indoor activities</span>
+                            <span class="timeline-budget">Budget: $200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Culture & Snow Itinerary -->
+            <div class="tab-content" id="culture-tab">
+                <div class="itinerary-header">
+                    <h3>Culture & Snow Focus</h3>
+                    <p>Immerse yourself in local history, museums, and winter cultural experiences</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Day 1: Historical Ushuaia</h4>
+                            <p>Prison Museum, End of World Museum, historic downtown walk</p>
+                            <span class="activity-level easy">✓ Easy - Indoor museums, short walks</span>
+                            <span class="timeline-budget">Budget: $150</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Day 2: End of World Train & Winter Activities</h4>
+                            <p>Historic railway journey, snow activities at Cerro Castor</p>
+                            <span class="activity-level moderate">⚠️ Moderate - Cold weather activities</span>
+                            <span class="timeline-budget">Budget: $280</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4>Day 3: Indigenous Culture & Crafts</h4>
+                            <p>Yaghan culture center, artisan workshops, traditional crafts</p>
+                            <span class="activity-level easy">✓ Easy - Indoor cultural activities</span>
+                            <span class="timeline-budget">Budget: $180</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item relaxation">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4>Day 4: Spa & Wine Day</h4>
+                            <p>Hotel spa treatments, wine tasting at local bars</p>
+                            <span class="activity-level easy">✓ Easy - Relaxation focused</span>
+                            <span class="timeline-budget">Budget: $220</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <h4>Day 5: Beagle Channel Cultural Tour</h4>
+                            <p>Boat tour with historical commentary, lighthouse visit</p>
+                            <span class="activity-level easy">✓ Easy - Heated boat, minimal walking</span>
+                            <span class="timeline-budget">Budget: $200</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">6</div>
+                        <div class="timeline-content">
+                            <h4>Day 6: Local Literature & Arts</h4>
+                            <p>Bookstore visits, local art galleries, cultural center</p>
+                            <span class="activity-level easy">✓ Easy - Indoor cultural exploration</span>
+                            <span class="timeline-budget">Budget: $160</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item relaxation">
+                        <div class="timeline-marker">7</div>
+                        <div class="timeline-content">
+                            <h4>Day 7: Farewell Cultural Feast</h4>
+                            <p>Traditional Patagonian cooking class, farewell dinner</p>
+                            <span class="activity-level easy">✓ Easy - Culinary experience</span>
+                            <span class="timeline-budget">Budget: $250</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Experiences Itinerary -->
+            <div class="tab-content" id="local-tab">
+                <div class="itinerary-header">
+                    <h3>Local Experiences Focus</h3>
+                    <p>Dive deep into Ushuaia's food scene, local bars, and authentic experiences</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">1</div>
+                        <div class="timeline-content">
+                            <h4>Day 1: Foodie Welcome</h4>
+                            <p>King crab lunch, local market tour, craft beer introduction</p>
+                            <span class="activity-level easy">✓ Easy - Food focused, minimal walking</span>
+                            <span class="timeline-budget">Budget: $180</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">2</div>
+                        <div class="timeline-content">
+                            <h4>Day 2: Gin & Tonic Trail</h4>
+                            <p>Local gin distillery visit, gin tasting tour, cocktail workshops</p>
+                            <span class="activity-level easy">✓ Easy - Indoor tastings</span>
+                            <span class="timeline-budget">Budget: $220</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">3</div>
+                        <div class="timeline-content">
+                            <h4>Day 3: Wine & Dine Experience</h4>
+                            <p>Argentine wine tasting, pairing dinners, local wine bars</p>
+                            <span class="activity-level easy">✓ Easy - Wine focused experiences</span>
+                            <span class="timeline-budget">Budget: $250</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item relaxation">
+                        <div class="timeline-marker">4</div>
+                        <div class="timeline-content">
+                            <h4>Day 4: Brewery & Local Hangouts</h4>
+                            <p>Beagle Brewery tour, local pub crawl, meet locals</p>
+                            <span class="activity-level easy">✓ Easy - Social drinking experiences</span>
+                            <span class="timeline-budget">Budget: $190</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">5</div>
+                        <div class="timeline-content">
+                            <h4>Day 5: Seafood & Beagle Channel</h4>
+                            <p>Fishing experience, fresh seafood lunch, boat tour with drinks</p>
+                            <span class="activity-level moderate">⚠️ Moderate - Boat activities</span>
+                            <span class="timeline-budget">Budget: $280</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">6</div>
+                        <div class="timeline-content">
+                            <h4>Day 6: Local Secrets</h4>
+                            <p>Hidden local restaurants, neighborhood bars, local guide</p>
+                            <span class="activity-level easy">✓ Easy - Local exploration</span>
+                            <span class="timeline-budget">Budget: $200</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item relaxation">
+                        <div class="timeline-marker">7</div>
+                        <div class="timeline-content">
+                            <h4>Day 7: Farewell Feast</h4>
+                            <p>Best restaurant in town, wine collection tasting, final toasts</p>
+                            <span class="activity-level easy">✓ Easy - Celebration focused</span>
+                            <span class="timeline-budget">Budget: $300</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Section -->
+    <section id="attractions" class="section">
+        <div class="container">
+            <h2 class="section-title">Must-Visit Attractions & Dining</h2>
+            
+            <div class="attraction-categories">
+                <button class="category-button active" data-category="all">All</button>
+                <button class="category-button" data-category="attractions">Attractions</button>
+                <button class="category-button" data-category="restaurants">Restaurants</button>
+                <button class="category-button" data-category="bars">Bars & Drinks</button>
+            </div>
+
+            <div class="attractions-grid">
+                <!-- Attractions -->
+                <div class="attraction-card" data-category="attractions">
+                    <img src="images/prison_museum.jpg" alt="Prison Museum" />
+                    <div class="card-content">
+                        <h3>Maritime & Prison Museum</h3>
+                        <p>Explore the fascinating history of Ushuaia's former prison and maritime heritage. Four museums in one building.</p>
+                        <div class="card-details">
+                            <span class="price">$36 per person</span>
+                            <span class="difficulty easy">✓ Easy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="attraction-card" data-category="attractions">
+                    <img src="images/beagle_channel.jpg" alt="Beagle Channel" />
+                    <div class="card-content">
+                        <h3>Beagle Channel Boat Tour</h3>
+                        <p>Wildlife viewing with sea lions, cormorants, and the iconic Les Eclaireurs Lighthouse.</p>
+                        <div class="card-details">
+                            <span class="price">$80-100 per person</span>
+                            <span class="difficulty moderate">⚠️ Moderate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="attractions">
+                    <img src="images/end_world_museum.jpg" alt="End of World Museum" />
+                    <div class="card-content">
+                        <h3>End of the World Museum</h3>
+                        <p>Discover indigenous culture, natural history, and early European colonization of Tierra del Fuego.</p>
+                        <div class="card-details">
+                            <span class="price">$25 per person</span>
+                            <span class="difficulty easy">✓ Easy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="attractions">
+                    <img src="images/national_park.jpg" alt="Tierra del Fuego National Park" />
+                    <div class="card-content">
+                        <h3>Tierra del Fuego National Park</h3>
+                        <p>Boardwalks, End of Pan-American Highway sign, and pristine Patagonian landscapes.</p>
+                        <div class="card-details">
+                            <span class="price">$15 per person</span>
+                            <span class="difficulty moderate">⚠️ Moderate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurants -->
+                <div class="attraction-card" data-category="restaurants">
+                    <img src="images/king_crab.jpg" alt="King Crab Restaurant" />
+                    <div class="card-content">
+                        <h3>Kaupe Restaurant</h3>
+                        <p>Premium king crab (centolla) and Patagonian lamb with stunning Beagle Channel views. Wine list features Argentine selections.</p>
+                        <div class="card-details">
+                            <span class="price">$60-90 per meal</span>
+                            <span class="specialty">🦀 King Crab</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="restaurants">
+                    <img src="images/lighthouse.jpg" alt="Chez Manu Restaurant" />
+                    <div class="card-content">
+                        <h3>Chez Manu</h3>
+                        <p>French-Patagonian fusion cuisine with excellent wine pairings. Known for their gin-based cocktails and local seafood.</p>
+                        <div class="card-details">
+                            <span class="price">$50-80 per meal</span>
+                            <span class="specialty">🍷 Wine Pairing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="restaurants">
+                    <img src="images/winter_landscape.jpg" alt="Tante Sara" />
+                    <div class="card-content">
+                        <h3>Tante Sara</h3>
+                        <p>Traditional tea house and restaurant serving Patagonian specialties. Great for afternoon wine and local beer selection.</p>
+                        <div class="card-details">
+                            <span class="price">$30-50 per meal</span>
+                            <span class="specialty">🍺 Local Beer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="restaurants">
+                    <img src="images/ushuaia_city_view.jpg" alt="Volver Restaurant" />
+                    <div class="card-content">
+                        <h3>Volver Restaurant</h3>
+                        <p>Contemporary Argentine cuisine with focus on local ingredients. Extensive wine cellar and craft cocktail menu featuring local gin.</p>
+                        <div class="card-details">
+                            <span class="price">$40-70 per meal</span>
+                            <span class="specialty">🍸 Gin Cocktails</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bars & Drinks -->
+                <div class="attraction-card" data-category="bars">
+                    <img src="images/beagle_channel.jpg" alt="Beagle Brewery" />
+                    <div class="card-content">
+                        <h3>Cervecería Beagle</h3>
+                        <p>Local craft brewery with tours and tastings. Try their IPA and seasonal brews. Great atmosphere for beer lovers.</p>
+                        <div class="card-details">
+                            <span class="price">$15-25 per visit</span>
+                            <span class="specialty">🍺 Craft Beer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="bars">
+                    <img src="images/prison_museum.jpg" alt="Dublin Pub" />
+                    <div class="card-content">
+                        <h3>Dublin Pub Ushuaia</h3>
+                        <p>Irish-style pub with wide selection of beers, whiskeys, and gin. Live music and friendly atmosphere. Popular with locals and tourists.</p>
+                        <div class="card-details">
+                            <span class="price">$20-35 per visit</span>
+                            <span class="specialty">🥃 Whiskey & Gin</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="bars">
+                    <img src="images/end_world_museum.jpg" alt="Kuar Wine Bar" />
+                    <div class="card-content">
+                        <h3>Kuar Wine Bar</h3>
+                        <p>Sophisticated wine bar featuring Argentine wines from Mendoza and Patagonia. Perfect for wine tasting and intimate conversations.</p>
+                        <div class="card-details">
+                            <span class="price">$25-45 per visit</span>
+                            <span class="specialty">🍷 Argentine Wine</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="attraction-card" data-category="bars">
+                    <img src="images/national_park.jpg" alt="Laguna Negra" />
+                    <div class="card-content">
+                        <h3>Laguna Negra</h3>
+                        <p>Trendy cocktail bar with creative gin-based drinks and local spirits. Modern atmosphere with views of the mountains.</p>
+                        <div class="card-details">
+                            <span class="price">$18-30 per visit</span>
+                            <span class="specialty">🍸 Gin Cocktails</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section id="map" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Interactive Ushuaia Map</h2>
+            <div class="map-container">
+                <div id="ushuaia-map"></div>
+                <div class="map-legend">
+                    <h4>Map Legend</h4>
+                    <div class="legend-item">
+                        <span class="legend-marker museum"></span>
+                        <span>Museums & Historical Sites</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker nature"></span>
+                        <span>Nature & Scenic Spots</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker dining"></span>
+                        <span>Restaurants & Fine Dining</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker bars"></span>
+                        <span>Bars, Breweries & Wine</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-marker transport"></span>
+                        <span>Transportation Hubs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section id="tips" class="section">
+        <div class="container">
+            <h2 class="section-title">Essential Travel Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-category">
+                    <h3>🧥 Packing Essentials</h3>
+                    <ul>
+                        <li>Warm, waterproof jacket and pants</li>
+                        <li>Insulated, non-slip boots</li>
+                        <li>Thermal underwear and wool socks</li>
+                        <li>Waterproof gloves and warm hat</li>
+                        <li>Portable hand warmers</li>
+                    </ul>
+                </div>
+                <div class="tip-category">
+                    <h3>🍷 Food & Drink Guide</h3>
+                    <ul>
+                        <li>King crab (centolla) is the local specialty</li>
+                        <li>Argentine wines pair perfectly with local cuisine</li>
+                        <li>Try local craft beer at Cervecería Beagle</li>
+                        <li>Gin cocktails are popular in trendy bars</li>
+                        <li>Make dinner reservations in advance</li>
+                    </ul>
+                </div>
+                <div class="tip-category">
+                    <h3>💰 Money Matters</h3>
+                    <ul>
+                        <li>Argentine Peso (ARS) is local currency</li>
+                        <li>Credit cards widely accepted</li>
+                        <li>ATMs available in city center</li>
+                        <li>US Dollars often accepted at tourist sites</li>
+                        <li>Tipping 10% is customary at restaurants</li>
+                    </ul>
+                </div>
+                <div class="tip-category">
+                    <h3>🌡️ Weather Wisdom</h3>
+                    <ul>
+                        <li>Dress in layers for temperature changes</li>
+                        <li>Weather can change quickly</li>
+                        <li>Limited daylight hours (9 AM - 5 PM)</li>
+                        <li>Indoor activities planned for bad weather</li>
+                        <li>Check weather apps daily</li>
+                    </ul>
+                </div>
+                <div class="tip-category">
+                    <h3>⚠️ Activity Difficulty Levels</h3>
+                    <ul>
+                        <li>✓ Easy: Minimal walking, indoor activities</li>
+                        <li>⚠️ Moderate: Some walking, weather dependent</li>
+                        <li>⚠️ Challenging: Extensive hiking, physical demands</li>
+                        <li>Most activities have easier alternatives</li>
+                        <li>Ask guides about difficulty before booking</li>
+                    </ul>
+                </div>
+                <div class="tip-category">
+                    <h3>📞 Emergency Contacts</h3>
+                    <ul>
+                        <li>Emergency: 911</li>
+                        <li>Tourist Information: +54 2901 424550</li>
+                        <li>Hospital: +54 2901 442500</li>
+                        <li>Police: 101</li>
+                        <li>Fire Department: 100</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Ushuaia Travel Handbook</h4>
+                    <p>Your complete guide to the End of the World</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#itinerary">Itinerary</a></li>
+                        <li><a href="#attractions">Attractions</a></li>
+                        <li><a href="#tips">Travel Tips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Travel Dates</h4>
+                    <p>July 31 - August 7, 2025</p>
+                    <p>7 Days • 2 Travelers • $1,500 Budget</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ushuaia Travel Handbook. Created for your journey to the End of the World.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
