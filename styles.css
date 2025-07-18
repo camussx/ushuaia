@@ -789,3 +789,37 @@ html {
     box-shadow: 0 5px 15px rgba(15, 118, 110, 0.2);
 }
 
+
+/* Google Maps Links */
+.maps-link {
+    display: inline-block;
+    background: #4285f4;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.maps-link:hover {
+    background: #3367d6;
+    text-decoration: none;
+    color: white;
+}
+
+.attraction-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.attraction-meta > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
