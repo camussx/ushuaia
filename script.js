@@ -66,7 +66,7 @@ function initializeFilters() {
 function initializeMap() {
     try {
         // Initialize map centered on Ushuaia
-        const map = L.map('map').setView([-54.8019, -68.3030], 13);
+        const map = L.map('leaflet-map').setView([-54.8019, -68.3030], 13);
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
